@@ -73,7 +73,8 @@
             <h1>Mini Reference for Popular Programming Languages</h1>
         </header>
     </div>
-    <table class="tableWithFloatingHeader">
+    <!--<table class="tableWithFloatingHeader">-->
+    <table>
         <tr>
             <th>Structure</th><th>Python</th><th>Java</th><th>Scala</th>
         </tr>
@@ -85,12 +86,18 @@
         </tr>
 
         <tr><th>if/else</th>
-            <td><pre><code class="python">if expression1:
-    statement(s)
-elif expression2:
-    statement(s)
-else:
-    statement(s)</code></pre></td>
+            <td><pre><code class="python">>>> x = int(raw_input("Please enter an integer: "))
+Please enter an integer: 42
+>>> if x < 0:
+...      x = 0
+...      print 'Negative changed to zero'
+... elif x == 0:
+...      print 'Zero'
+... elif x == 1:
+...      print 'Single'
+... else:
+...      print 'More'
+More</code></pre></td>
             <td><pre><code class="java">if (testscore >= 90) {
     grade = 'A';
 } else if (testscore >= 80) {
@@ -107,10 +114,77 @@ else:
             <td><pre><code class="scala"></code></pre></td>
         </tr>
 
-        <tr><th>for</th>
-            <td><pre><code class="python"></code></pre></td>
+        <tr><th>List</th>
+            <td><pre><code class="python">>>> a = ['spam', 'eggs', 100, 1234]
+>>> # Like string indices, list indices start at 0,
+>>> # and lists can be sliced, concatenated and so on:
+>>> a[1:-1]
+['eggs', 100]
+>>> a[:2] + ['bacon', 2*2]
+['spam', 'eggs', 'bacon', 4]
+>>> # Assignment to slices is also possible
+>>> # Replace some items:
+... a[0:2] = [1, 12]
+>>> a
+[1, 12, 123, 1234]
+>>> # Remove some:
+... a[0:2] = []
+>>> a
+[123, 1234]
+>>> # Insert some:
+... a[1:1] = ['bletch', 'xyzzy']
+>>> a
+[123, 'bletch', 'xyzzy', 1234]
+>>> # Insert (a copy of) itself at the beginning
+>>> a[:0] = a
+>>> a
+[123, 'bletch', 'xyzzy', 1234, 123, 'bletch', 'xyzzy', 1234]
+>>> # Clear the list: replace all items with an empty list
+>>> a[:] = []
+>>> a
+[]
+</code></pre></td>
             <td><pre><code class="java"></code></pre></td>
-            <td><pre><code class="scala"></code></pre></td>
+            <td><pre><code class="scala">val oneTwoThree = List(1, 2, 3)</code></pre></td>
+        </tr>
+
+        <tr><th>for/foreach</th>
+            <td><pre><code class="python">>>> words = ['cat', 'window']
+>>> for w in words:
+...     print w, len(w)
+cat 3
+window 6
+>>> # If you need to modify the sequence you are
+>>> # iterating over while inside the loop, make a copy
+>>> for w in words[:]:  # slice copy of the list
+...     if len(w) > 4:
+...         words.insert(0, w)
+>>> words
+['window', 'cat', 'window']
+>>> # Loop statements may have 'else' clause;
+>>> # it is executed when the loop is not
+>>> # terminated by a break statement.
+>>> for n in range(2, 10):
+...     for x in range(2, n):
+...         if n % x == 0:
+...             print n, 'equals', x, '*', n/x
+...             break
+...     else:
+...         # loop fell through without finding a factor
+...         print n, 'is a prime number'
+...
+2 is a prime number
+3 is a prime number
+4 equals 2 * 2
+5 is a prime number
+6 equals 2 * 3
+7 is a prime number
+8 equals 2 * 4
+9 equals 3 * 3</code></pre></td>
+            <td><pre><code class="java"></code></pre></td>
+            <td><pre><code class="scala">for (line <- lines) {
+    println(line)
+}</code></pre></td>
         </tr>
 
         <tr><th>switch</th>
@@ -120,52 +194,124 @@ else:
         </tr>
 
         <tr><th>Function</th>
-            <td><pre><code class="python"></code></pre></td>
+            <td><pre><code class="python">>>> def fib(n): # return Fibonacci series up to n
+...     """Return a list containing the Fibonacci series up to n."""
+...     result = []
+...     a, b = 0, 1
+...     while a < n:
+...         result.append(a)    # see below
+...         a, b = b, a+b
+...     return result
+>>> # The value of the function name has a type: user-defined function
+>>> # It can be assigned to another name
+>>> f = fib
+>>> f100 = f(100)    # call it
+>>> f100             # write the result
+[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+>>> # Functions can be defined with variable num of argumets
+>>> # 1. Default arg values:
+>>> def ask_ok(prompt, retries=4, complaint='Yes or no, please!'):
+...     while True:
+...         ok = raw_input(prompt)
+...         if ok in ('y', 'ye', 'yes'):
+...             return True
+...         if ok in ('n', 'no', 'nop', 'nope'):
+...             return False
+...         retries = retries - 1
+...         if retries < 0:
+...             raise IOError('refusenik user')
+...         print complaint
+>>> # The default values are evaluated at the point
+>>> # of function definition in the defining scope
+>>> i = 5
+>>> def f(arg=i):
+...     print arg
+>>> i = 6
+>>> f()
+5
+            </code></pre></td>
             <td><pre><code class="java"></code></pre></td>
-            <td><pre><code class="scala"></code></pre></td>
+            <td><pre><code class="scala">def max(x: Int, y: Int): Int = {
+    if (x > y) x
+    else y
+}
+
+def add(that: Rational): Rational =
+    new Rational(n * that.d + that.n * d,
+                 d * that.d)</code></pre></td>
         </tr>
 
-        <tr><th>List</th>
-            <td><pre><code class="python"></code></pre></td>
-            <td><pre><code class="java"></code></pre></td>
-            <td><pre><code class="scala"></code></pre></td>
-        </tr>
 
         <tr><th>Array</th>
             <td><pre><code class="python"></code></pre></td>
             <td><pre><code class="java"></code></pre></td>
-            <td><pre><code class="scala"></code></pre></td>
+            <td><pre><code class="scala">val numNames = Array("zero", "one", "two")
+
+val greetStrings = new Array[String](3)
+greetStrings(0) = "Hello"
+greetStrings(1) = ", "
+greetStrings(2) = "world!\n"
+for (i <- 0 to 2)
+    print(greetStrings(i))</code></pre></td>
         </tr>
 
         <tr><th>Tuple</th>
             <td><pre><code class="python"></code></pre></td>
             <td><pre><code class="java"></code></pre></td>
-            <td><pre><code class="scala"></code></pre></td>
+            <td><pre><code class="scala">val tuple = (99, "Luftballons", 5.234)
+println(tuple._1)
+println(tuple._3)</code></pre></td>
         </tr>
 
         <tr><th>Set</th>
             <td><pre><code class="python"></code></pre></td>
             <td><pre><code class="java"></code></pre></td>
-            <td><pre><code class="scala"></code></pre></td>
+            <td><pre><code class="scala">var jetSet = Set("Boeing", "Airbus")
+jetSet += "Lear"
+println(jetSet.contains("Cessna"))</code></pre></td>
         </tr>
 
         <tr><th>Map/Dict</th>
-            <td><pre><code class="python"></code></pre></td>
+            <td><pre><code class="python">>>> stuff = {'name': 'Zed', 'age': 36, 'height': 6*12+2}
+>>> print stuff['name']
+Zed</code></pre></td>
             <td><pre><code class="java"></code></pre></td>
-            <td><pre><code class="scala"></code></pre></td>
+            <td><pre><code class="scala">// immutable
+val romanNumeral = Map(1 -> "I", 2 -> "II", 3 -> "III", 4 -> "IV", 5 -> "V")
+println(romanNumeral(4))
+
+// mutable
+import scala.collection.mutable.Map
+
+val treasureMap = Map[Int, String]()
+treasureMap += (1 -> "Go to island.")
+treasureMap += (2 -> "Find big X on ground.")
+treasureMap += (3 -> "Dig.")
+println(treasureMap(2))</code></pre></td>
         </tr>
 
         <tr><th>Class</th>
-            <td><pre><code class="python"></code></pre></td>
+            <td><pre><code class="python">class TheThing(object):
+    def __init__(self):
+        self.number = 0
+
+    def some_function(self):
+        print "I got called."
+
+    def add_me_up(self, more):
+        self.number += more
+        return self.number
+
+# create a Thing
+a = TheThing()</code></pre></td>
             <td><pre><code class="java"></code></pre></td>
-            <td><pre><code class="scala"></code></pre></td>
+            <td><pre><code class="scala">class Rational(n: Int, d: Int) {
+    override def toString = n +""/""+ d
+}
+
+val x = new Rational(5, 6)</code></pre></td>
         </tr>
 
-        <tr><th>Foreach</th>
-            <td><pre><code class="python"></code></pre></td>
-            <td><pre><code class="java"></code></pre></td>
-            <td><pre><code class="scala"></code></pre></td>
-        </tr>
         <tr><th></th>
             <td><pre><code class="python"></code></pre></td>
             <td><pre><code class="java"></code></pre></td>
@@ -173,5 +319,8 @@ else:
         </tr>
     </table>
 </div>
+<footer>
+    Copyright 2012 - <a href="http://www.linkedin.com/in/aikikode">Denis Kovalev</a>
+</footer>
 </body>
 </html>
