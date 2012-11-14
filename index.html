@@ -1,0 +1,177 @@
+<!--<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"-->
+        <!--"http://www.w3.org/TR/html4/loose.dtd">-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/vs.css" />
+
+    <script type="text/javascript" src="highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad()</script>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        function UpdateTableHeaders() {
+            $("div.divTableWithFloatingHeader").each(function() {
+                var originalHeaderRow = $(".tableFloatingHeaderOriginal", this);
+                var floatingHeaderRow = $(".tableFloatingHeader", this);
+                var offset = $(this).offset();
+                var scrollTop = $(window).scrollTop();
+                if ((scrollTop > offset.top) && (scrollTop < offset.top + $(this).height())) {
+                    floatingHeaderRow.css("visibility", "visible");
+                    floatingHeaderRow.css("top", Math.min(scrollTop - offset.top, $(this).height() - floatingHeaderRow.height()) + "px");
+
+                    // Copy cell widths from original header
+                    $("th", floatingHeaderRow).each(function(index) {
+                        var cellWidth = $("th", originalHeaderRow).eq(index).css('width');
+                        $(this).css('width', cellWidth);
+                    });
+
+                    // Copy row width from whole table
+                    floatingHeaderRow.css("width", $(this).css("width"));
+                }
+                else {
+                    floatingHeaderRow.css("visibility", "hidden");
+                    floatingHeaderRow.css("top", "0px");
+                }
+            });
+        }
+
+        $(document).ready(function() {
+            $("table.tableWithFloatingHeader").each(function() {
+                $(this).wrap("<div class=\"divTableWithFloatingHeader\" style=\"position:relative\"></div>");
+
+                var originalHeaderRow = $("tr:first", this)
+                originalHeaderRow.before(originalHeaderRow.clone());
+                var clonedHeaderRow = $("tr:first", this)
+
+                clonedHeaderRow.addClass("tableFloatingHeader");
+                clonedHeaderRow.css("position", "absolute");
+                clonedHeaderRow.css("top", "0px");
+                clonedHeaderRow.css("left", $(this).css("margin-left"));
+                clonedHeaderRow.css("visibility", "hidden");
+
+                originalHeaderRow.addClass("tableFloatingHeaderOriginal");
+            });
+            UpdateTableHeaders();
+            $(window).scroll(UpdateTableHeaders);
+            $(window).resize(UpdateTableHeaders);
+        });
+    </script>
+
+    <title>Mini Reference for Popular Programming Languages</title>
+</head>
+<body>
+<div id="container">
+    <div class="inner">
+        <header>
+            <h1>Mini Reference for Popular Programming Languages</h1>
+        </header>
+    </div>
+    <table class="tableWithFloatingHeader">
+        <tr>
+            <th>Structure</th><th>Python</th><th>Java</th><th>Scala</th>
+        </tr>
+
+        <tr><th>Variable</th>
+            <td><pre><code class="python">x = 3<br>myStr = "Hello, World!"</code></pre></td>
+            <td><pre><code class="java">int a = 56;<br>String line = "abcdef";</code></pre></td>
+            <td><pre><code class="scala">val msg = "Hello, world!" // constant<br>var x = 3 // variable<br>def res = sqrt(x) // avaluated with each call</code></pre></td>
+        </tr>
+
+        <tr><th>if/else</th>
+            <td><pre><code class="python">if expression1:
+    statement(s)
+elif expression2:
+    statement(s)
+else:
+    statement(s)</code></pre></td>
+            <td><pre><code class="java">if (testscore >= 90) {
+    grade = 'A';
+} else if (testscore >= 80) {
+    grade = 'B';
+} else {
+    grade = 'F';
+}</code></pre></td>
+            <td><pre><code class="scala">if (1 < 2) 6 else 7 // less than</code></pre></td>
+        </tr>
+
+        <tr><th>while</th>
+            <td><pre><code class="python"></code></pre></td>
+            <td><pre><code class="java"></code></pre></td>
+            <td><pre><code class="scala"></code></pre></td>
+        </tr>
+
+        <tr><th>for</th>
+            <td><pre><code class="python"></code></pre></td>
+            <td><pre><code class="java"></code></pre></td>
+            <td><pre><code class="scala"></code></pre></td>
+        </tr>
+
+        <tr><th>switch</th>
+            <td><pre><code class="python"></code></pre></td>
+            <td><pre><code class="java"></code></pre></td>
+            <td><pre><code class="scala"></code></pre></td>
+        </tr>
+
+        <tr><th>Function</th>
+            <td><pre><code class="python"></code></pre></td>
+            <td><pre><code class="java"></code></pre></td>
+            <td><pre><code class="scala"></code></pre></td>
+        </tr>
+
+        <tr><th>List</th>
+            <td><pre><code class="python"></code></pre></td>
+            <td><pre><code class="java"></code></pre></td>
+            <td><pre><code class="scala"></code></pre></td>
+        </tr>
+
+        <tr><th>Array</th>
+            <td><pre><code class="python"></code></pre></td>
+            <td><pre><code class="java"></code></pre></td>
+            <td><pre><code class="scala"></code></pre></td>
+        </tr>
+
+        <tr><th>Tuple</th>
+            <td><pre><code class="python"></code></pre></td>
+            <td><pre><code class="java"></code></pre></td>
+            <td><pre><code class="scala"></code></pre></td>
+        </tr>
+
+        <tr><th>Set</th>
+            <td><pre><code class="python"></code></pre></td>
+            <td><pre><code class="java"></code></pre></td>
+            <td><pre><code class="scala"></code></pre></td>
+        </tr>
+
+        <tr><th>Map/Dict</th>
+            <td><pre><code class="python"></code></pre></td>
+            <td><pre><code class="java"></code></pre></td>
+            <td><pre><code class="scala"></code></pre></td>
+        </tr>
+
+        <tr><th>Class</th>
+            <td><pre><code class="python"></code></pre></td>
+            <td><pre><code class="java"></code></pre></td>
+            <td><pre><code class="scala"></code></pre></td>
+        </tr>
+
+        <tr><th>Foreach</th>
+            <td><pre><code class="python"></code></pre></td>
+            <td><pre><code class="java"></code></pre></td>
+            <td><pre><code class="scala"></code></pre></td>
+        </tr>
+        <tr><th></th>
+            <td><pre><code class="python"></code></pre></td>
+            <td><pre><code class="java"></code></pre></td>
+            <td><pre><code class="scala"></code></pre></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
