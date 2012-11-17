@@ -229,6 +229,37 @@ window 6
 >>> i = 6
 >>> f()
 5
+>>> # The default value is evaluated only once:
+>>> def f(a, L=[]):
+...     L.append(a)
+...     return L
+>>> print f(1)
+[1]
+>>> print f(2)
+[1, 2]
+>>> print f(3)
+[1, 2, 3]
+>>> # workaround:
+>>> def f(a, L=None):
+...    if L is None:
+...         L = []
+...    L.append(a)
+...    return L
+>>> # 2. Functions can also be called using keyword
+>>> #    arguments of the form 'kwarg=value':
+>>> def parrot(voltage, state='a stiff', action='voom', type='Norwegian'):
+...     pass
+>>> parrot(1000)                                  # 1 positional arg
+>>> parrot(voltage=1000)                          # 1 keyword arg
+>>> parrot(voltage=1000000, action='VOOOOOM')     # 2 keyword args
+>>> parrot(action='VOOOOOM', voltage=1000000)     # 2 keyword args
+>>> parrot('a million', 'bereft of life', 'jump') # 3 positional args
+>>> parrot('a thousand', state='pushing up')      # 1 positional, 1 keyword
+>>> # THESE CALLS ARE WRONG:
+>>> parrot()                     # required arg missing
+>>> parrot(voltage=5.0, 'dead')  # non-keyword arg after a keyword arg
+>>> parrot(110, voltage=220)     # duplicate value for the same arg
+>>> parrot(actor='John Cleese')  # unknown keyword arg
             </code></pre></td>
             <td><pre><code class="java"></code></pre></td>
             <td><pre><code class="scala">def max(x: Int, y: Int): Int = {
