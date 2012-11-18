@@ -325,9 +325,14 @@ def add(that: Rational): Rational =
                  d * that.d)</code></pre></td>
         </tr>
 
-
         <tr><th>array</th>
-            <td><pre><code class="python"></code></pre></td>
+            <td><pre>For most purposes List will do. 'array.array' is useful when you
+need a homogeneous C array of data for reasons other than doing math.
+
+Arrays are stored more efficiently: as contiguous blocks of memory,
+but Lists are faster, because operations on array "raw" data need
+to continuously create and destroy python objects when reading from
+or writing to the array.</pre></td>
             <td><pre><code class="java"></code></pre></td>
             <td><pre><code class="scala">val numNames = Array("zero", "one", "two")
 
