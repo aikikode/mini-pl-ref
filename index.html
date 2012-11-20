@@ -76,12 +76,12 @@
     <!--<table class="tableWithFloatingHeader">-->
     <table>
         <tr>
-            <th>Structure</th><th>Python</th><th>Java</th><th>Scala</th>
+            <th>Structure</th><th>Python</th><th>Scala</th>
         </tr>
 
         <tr><th>variable</th>
             <td><pre><code class="python">x = 3<br>myStr = "Hello, World!"</code></pre></td>
-            <td><pre><code class="java">int a = 56;<br>String line = "abcdef";</code></pre></td>
+            <!--<td><pre><code class="java">int a = 56;<br>String line = "abcdef";</code></pre></td>-->
             <td><pre><code class="scala">val msg = "Hello, world!" // constant<br>var x = 3 // variable<br>def res = sqrt(x) // avaluated with each call</code></pre></td>
         </tr>
 
@@ -98,19 +98,19 @@ Please enter an integer: 42
 ... else:
 ...      print 'More'
 More</code></pre></td>
-            <td><pre><code class="java">if (testscore >= 90) {
-    grade = 'A';
-} else if (testscore >= 80) {
-    grade = 'B';
-} else {
-    grade = 'F';
-}</code></pre></td>
+            <!--<td><pre><code class="java">if (testscore >= 90) {-->
+    <!--grade = 'A';-->
+<!--} else if (testscore >= 80) {-->
+    <!--grade = 'B';-->
+<!--} else {-->
+    <!--grade = 'F';-->
+<!--}</code></pre></td>-->
             <td><pre><code class="scala">if (1 < 2) 6 else 7 // less than</code></pre></td>
         </tr>
 
         <tr><th>while</th>
             <td><pre><code class="python"></code></pre></td>
-            <td><pre><code class="java"></code></pre></td>
+            <!--<td><pre><code class="java"></code></pre></td>-->
             <td><pre><code class="scala"></code></pre></td>
         </tr>
 
@@ -144,7 +144,7 @@ More</code></pre></td>
 >>> a
 []
 </code></pre></td>
-            <td><pre><code class="java"></code></pre></td>
+            <!--<td><pre><code class="java"></code></pre></td>-->
             <td><pre><code class="scala">val oneTwoThree = List(1, 2, 3)</code></pre></td>
         </tr>
 
@@ -169,7 +169,7 @@ More</code></pre></td>
 7 is a prime number
 8 equals 2 * 4
 9 equals 3 * 3</code></pre></td>
-            <td><pre><code class="java"></code></pre></td>
+            <!--<td><pre><code class="java"></code></pre></td>-->
             <td><pre><code class="scala"></code></pre></td>
         </tr>
 
@@ -212,7 +212,7 @@ What is your favorite color - It is blue.
 gallahad the pure
 robin the brave
 </code></pre></td>
-            <td><pre><code class="java"></code></pre></td>
+            <!--<td><pre><code class="java"></code></pre></td>-->
             <td><pre><code class="scala">for (line <- lines) {
     println(line)
 }</code></pre></td>
@@ -220,7 +220,7 @@ robin the brave
 
         <tr><th>switch</th>
             <td><pre>-- Not implemented --</pre></td>
-            <td><pre><code class="java"></code></pre></td>
+            <!--<td><pre><code class="java"></code></pre></td>-->
             <td><pre><code class="scala"></code></pre></td>
         </tr>
 
@@ -314,7 +314,7 @@ This parrot would not VOOM if you put four million volts through it.
 42
 >>> f(1)
 43</code></pre></td>
-            <td><pre><code class="java"></code></pre></td>
+            <!--<td><pre><code class="java"></code></pre></td>-->
             <td><pre><code class="scala">def max(x: Int, y: Int): Int = {
     if (x > y) x
     else y
@@ -333,7 +333,7 @@ Arrays are stored more efficiently: as contiguous blocks of memory,
 but Lists are faster, because operations on array "raw" data need
 to continuously create and destroy python objects when reading from
 or writing to the array.</pre></td>
-            <td><pre><code class="java"></code></pre></td>
+            <!--<td><pre><code class="java"></code></pre></td>-->
             <td><pre><code class="scala">val numNames = Array("zero", "one", "two")
 
 val greetStrings = new Array[String](3)
@@ -362,7 +362,7 @@ for (i <- 0 to 2)
 >>> empty = ()           # empty tuple
 >>> singleton = 'hello', # 1-element tuple, note trailing comma
 </code></pre></td>
-            <td><pre><code class="java"></code></pre></td>
+            <!--<td><pre><code class="java"></code></pre></td>-->
             <td><pre><code class="scala">val tuple = (99, "Luftballons", 5.234)
 println(tuple._1)
 println(tuple._3)</code></pre></td>
@@ -389,7 +389,7 @@ set(['a', 'c', 'r', 'd', 'b', 'm', 'z', 'l'])
 set(['a', 'c'])
 >>> a ^ b                   # letters in a or b but not both
 set(['r', 'd', 'b', 'm', 'z', 'l'])</code></pre></td>
-            <td><pre><code class="java"></code></pre></td>
+            <!--<td><pre><code class="java"></code></pre></td>-->
             <td><pre><code class="scala">var jetSet = Set("Boeing", "Airbus")
 jetSet += "Lear"
 println(jetSet.contains("Cessna"))</code></pre></td>
@@ -404,8 +404,7 @@ The main operations on a dictionary are storing a value with some key and
 extracting the value given the key. It is also possible to delete a
 key:value pair with del. If you store using a key that is already in use,
 the old value associated with that key is forgotten. It is an error to
-extract a value using a non-existent key.
-<code class="python">>>> tel = {'jack': 4098, 'sape': 4139}
+extract a value using a non-existent key.</pre><hr/><pre><code class="python">>>> tel = {'jack': 4098, 'sape': 4139}
 >>> tel['guido'] = 4127  # add new elem
 >>> tel
 {'sape': 4139, 'guido': 4127, 'jack': 4098}
@@ -427,10 +426,10 @@ True
 >>> # ...or simply strings
 >>> dict(sape=4139, guido=4127, jack=4098)
 {'sape': 4139, 'jack': 4098, 'guido': 4127}</code></pre></td>
-            <td><pre><code class="java"></code></pre></td>
+            <!--<td><pre><code class="java"></code></pre></td>-->
             <td><pre><code class="scala">// immutable
-val romanNumeral = Map(1 -> "I", 2 -> "II", 3 -> "III", 4 -> "IV", 5 -> "V")
-println(romanNumeral(4))
+val romanNumeral = Map(1 -> "I", 2 -> "II", 3 -> "III")
+println(romanNumeral(3))
 
 // mutable
 import scala.collection.mutable.Map
@@ -443,7 +442,13 @@ println(treasureMap(2))</code></pre></td>
         </tr>
 
         <tr><th>class</th>
-            <td><pre><code class="python">class TheThing(object):
+            <td><pre>
+Classes are created at runtime and can be modified further.
+All class members are public, all member functions are virtual.
+Classes are objects.
+Built-in types can be used as base classes.
+Class Object is a wrapper around the contents of the namespace created by
+the class definition. The class object is bound to the class name.</pre><hr/><pre><code class="python">class TheThing:
     def __init__(self):
         self.number = 0
 
@@ -454,9 +459,11 @@ println(treasureMap(2))</code></pre></td>
         self.number += more
         return self.number
 
-# create a Thing
-a = TheThing()</code></pre></td>
-            <td><pre><code class="java"></code></pre></td>
+a = TheThing()           # class instantiation
+TheThing.some_function() # attribute reference
+a.some_function()        # also attribute reference
+# a.some_function() === TheThing.some_function(a)</code></pre></td>
+            <!--<td><pre><code class="java"></code></pre></td>-->
             <td><pre><code class="scala">class Rational(n: Int, d: Int) {
     override def toString = n +""/""+ d
 }
@@ -466,7 +473,7 @@ val x = new Rational(5, 6)</code></pre></td>
 
         <tr><th></th>
             <td><pre><code class="python"></code></pre></td>
-            <td><pre><code class="java"></code></pre></td>
+            <!--<td><pre><code class="java"></code></pre></td>-->
             <td><pre><code class="scala"></code></pre></td>
         </tr>
     </table>
